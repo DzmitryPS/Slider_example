@@ -7,10 +7,14 @@ import {theme} from '../src/components/theme';
 import { useSwipeable } from "react-swipeable";
 
 const MainDiv= styled.div`
-width: 700px;
+width: 100%;
 display: flex;
 justify-content: center; 
 margin: auto;
+
+@media screen and (max-width: 850px){
+position: relative;
+}
 
 `;
 
@@ -23,7 +27,6 @@ const StyledMyContainer = styled.div`
     padding: ${theme.padding.double};
     gap: ${theme.padding.double};
     border-radius: 15px;
-
   ;
 
     div {

@@ -1,34 +1,46 @@
 import { React} from "react";
 import styled from 'styled-components';
-
+import {theme} from '../components/theme';
 import firstPortrait from "../images/customer1.png";
 import secondPortrait from "../images/costumer2.png";
 import thirdPortrait from "../images/costumer3.png";
 
 const StyledCard = styled.div`
+
     width: 100%;
     height: 330px;
-    border-radius: 15px;
+    border-radius: ${theme.borderRadius.small};
     display: flex;
     flex-direction: column;
+    gap: ${theme.padding.standard};
     align-items: center;
-    
+    padding: ${theme.padding.standard};
+    background-color: ${theme.color.light};
 
     img {
         width: 125px;
-        border-radius: 100%;
-        border: 2px solid black;
+        border-radius: ${theme.borderRadius.circle};
+        border: ${theme.borderWidth.medium} solid ${theme.color.primary};
+        padding: ${theme.padding.small};
+    }
+
+    h2 {
+        font-size: ${theme.fontSize.medium};
+        line-height: ${theme.lineHeight.medium};
+        text-align: center;
+        margin-top: ${theme.padding.double};
     }
 
     p {
+        font-size: ${theme.fontSize.medium};
+        line-height: ${theme.lineHeight.medium};
         text-align: center;
     }
 
-    svg {
-        width: 24px;
-        height: 24px;
-    }
 
+    @media (min-width: ${theme.media.phone}) {
+        max-width: ${theme.media.phone};
+    }
 `;
 
 
