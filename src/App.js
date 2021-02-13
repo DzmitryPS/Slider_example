@@ -4,16 +4,18 @@ import './App.css';
 import Card from '../src/components/Card';
 import CircleButton from '../src/components/CircleButton';
 import {theme} from '../src/components/theme';
+import { useSwipeable } from "react-swipeable";
 
 const MainDiv= styled.div`
 width: 700px;
 display: flex;
 justify-content: center; 
 margin: auto;
+
 `;
 
 const StyledMyContainer = styled.div`
-    width: 20%;
+    width: 400px;
     background-color: ${theme.color.tertiary};
     display: flex;
     flex-direction: column;
@@ -21,6 +23,8 @@ const StyledMyContainer = styled.div`
     padding: ${theme.padding.double};
     gap: ${theme.padding.double};
     border-radius: 15px;
+
+  ;
 
     div {
         width: 100%;
@@ -59,32 +63,18 @@ const App = () => {
       }
     }
     
-    const [touchStart, setTouchStart] = useState(0);
-    const [touchEnd, setTouchEnd] = useState(0);
-
-    const handleTouchStart=(e)=> {
-      setTouchStart(e.targetTouches[0].clientX);
-  }
-
-  const handleTouchMove=(e)=> {
-    setTouchEnd(e.targetTouches[0].clientX);
-}
-
-const handleTouchEnd=()=> {
-  if (touchStart - touchEnd > 150) {
-      // do your stuff here for left swipe
-      moveSliderRight();
-  }
-
-  if (touchStart - touchEnd < -150) {
-      // do your stuff here for right swipe
-      moveSliderLeft();
-  }
-}
+    const handlers = useSwipeable({
+      onSwipedLeft: () => moveSliderLeft(),
+      onSwipedRight: () => moveSliderRight(),
+      preventDefaultTouchmoveEvent: true,
+      trackMouse: true,
+      trackTouch: true
+    });
+  
 
   return (
     <MainDiv>
-       <StyledMyContainer onTouchStart={handleTouchStart} onTouchEnd = {handleTouchEnd} onTouchMove={handleTouchMove}>
+       <StyledMyContainer {...handlers}>
                 <Card imageNumber={carouselImage} />
                 <div>
                     <CircleButton action={firstImageToggle} actionTwo={secondImageToggle} actionThree={thirdImageToggle} isActive={carouselImage} />
