@@ -27,6 +27,11 @@ const StyledMyContainer = styled.div`
     padding: ${theme.padding.double};
     gap: ${theme.padding.double};
     border-radius: 15px;
+
+    i{
+      font-size: 27px;
+      color: #6495ED;
+    }
   ;
 
     div {
@@ -80,7 +85,9 @@ const App = () => {
        <StyledMyContainer {...handlers}>
                 <Card imageNumber={carouselImage} />
                 <div>
+                <i class="fas fa-arrow-left" onClick={moveSliderRight}></i>
                     <CircleButton action={firstImageToggle} actionTwo={secondImageToggle} actionThree={thirdImageToggle} isActive={carouselImage} />
+                  <i class="fas fa-arrow-right" onClick={moveSliderLeft}></i>    
                 </div>
         </StyledMyContainer>
         </MainDiv>
