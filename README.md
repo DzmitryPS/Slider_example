@@ -1,10 +1,10 @@
 # Demo:
-https://flamboyant-varahamihira-2ef3b9.netlify.app/
+https://nostalgic-keller-037281.netlify.app/
 
 ### Install:
 
 ```
-$ git clone https://github.com/DzmitryPS/Slider_react
+$ git clone https://github.com/DzmitryPS/Slider_example
 $ npm install
 $ npm start
 
